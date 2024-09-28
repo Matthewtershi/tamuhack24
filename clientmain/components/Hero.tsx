@@ -1,5 +1,4 @@
 import React from "react";
-import { GlobeDemo } from "./ui/gridglobe";
 
 const Hero = () => {
     return (
@@ -13,7 +12,7 @@ const Hero = () => {
             </div>
 
             <div>
-                <GlobeDemo />
+                asdf
             </div>
         </div>
     );
