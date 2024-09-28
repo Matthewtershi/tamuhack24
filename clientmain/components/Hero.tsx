@@ -1,4 +1,5 @@
 import React from "react";
+import Map from "./ui/Map.jsx";
 
 const Hero = () => {
     return (
@@ -12,7 +13,7 @@ const Hero = () => {
             </div>
 
             <div>
-                asdf
+                <Map />
             </div>
         </div>
     );
