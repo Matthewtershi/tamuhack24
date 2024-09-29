@@ -4,7 +4,7 @@ import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import countries from "../../../data/globe.json";
+import countries from "../../../assets/globe.json";
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
@@ -15,7 +15,7 @@ declare module "@react-three/fiber" {
 extend({ ThreeGlobe });
 
 const RING_PROPAGATION_SPEED = 3;
-const aspect = 1.2;
+const aspect = 1;
 const cameraZ = 300;
 
 type Position = {
@@ -82,7 +82,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     atmosphereAltitude: 0.1,
     polygonColor: "rgba(255,255,255,0.7)",
     globeColor: "#1d072e",
-    emissive: "#000000",
+    emissive: "#0ff0ff",
     emissiveIntensity: 0.1,
     shininess: 0.9,
     arcTime: 2000,
