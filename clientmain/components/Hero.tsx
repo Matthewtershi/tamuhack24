@@ -27,7 +27,7 @@ const Hero = () => {
                         </div>
                         <Image src={temp} alt={""} className="w-21 mb-4"/> 
                         <button className="animate_animated animate_slideInLeft btn-34">
-                            <span> <a href="#map"> Learn More! </a></span>
+                            <span className="asdfasdf font-3xl"> <a href="#map"> Learn More! </a></span>
                         </button>
                     </div>
                 </div>

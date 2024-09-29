@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import "../../client/public/general.css";
-import asdf from "../../client/public/head4.png";
+import asdf from "../../client/public/brownlogo.png";
 
 const Footer = () => {
     return (
