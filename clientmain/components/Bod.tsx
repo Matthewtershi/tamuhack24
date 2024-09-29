@@ -4,9 +4,9 @@ import { gridItems } from '../../assets'
 
 const Grid = () => {
   return (
-    <div className="px-10 m-20" id="process">
+    <div className="px-10 py-10 m-20" id="process">
         <h1 className="heading text-center text-7xl asdfasdf font-extrabold mb-20 text-lightbrown ">
-            INSIGHT ONTO OUR {' '}
+            INSIGHT INTO OUR {' '}
             <span className="text-darkbrown"> IMPACT </span>
         </h1>
         <section className="mt-5 mb-20 p-3" style={{ userSelect: 'none' }}>
@@ -24,14 +24,6 @@ const Grid = () => {
                 ))}
             </BentoGrid>
         </section>
-        {/* <div className="flex border-4 border-black">
-            <div className="text-4xl">
-                Global Impact
-            </div>
-            <div className="text-s">
-                Body
-            </div>
-        </div> */}
     </div>
   )
 }

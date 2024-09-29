@@ -20,6 +20,7 @@ const config: Config = {
         darkbrown: "#6E493A",
         lightbrown: "#D6AC96",
         beige: "#FFF5E0",
+        special: "f9b233",
       },
     },
   },
