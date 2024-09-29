@@ -1,12 +1,17 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, g
 from flask_cors import CORS
 
-from datasources import FWIData, RainData, WindData
+from datasources import DataSources
 
 import random
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+def get_datasources():
+    if 'ds' not in g:
+        g.ds = DataSources()
+    return g.ds
 
 @app.route('/api/data', methods=['GET'])
 def get_data():
