@@ -4,3 +4,10 @@
     font-weight: bold; /* or 'bold' if applicable */
     font-style: normal; /* or 'italic' if applicable */
   }
+
+  @font-face {
+    font-family: 'Copperplate';
+    src: url('./Copperplate Gothic Std 29 BC.otf') format('truetype'); 
+    font-weight: normal; /* or 'bold' if applicable */
+    font-style: normal; /* or 'italic' if applicable */
+  }

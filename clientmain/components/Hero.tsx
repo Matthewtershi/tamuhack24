@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="w-full mx-auto h-[88vh] flex text-black">
             <div className="gap-x-10 mx-auto flex py-20 left-10 overflow-hidden" style={{
                 userSelect: "none",
-                transform: "translateX(50px)",
+                transform: "translateX(85px)",
                 }}>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
                 <div className="flex flex-col mb-10 p-3 justify-center items-center relative">
@@ -25,9 +25,9 @@ const Hero = () => {
                             <Image src={orange} alt={""} style={{ width: "auto", height: "8vh" }} /> 
                             <Image src={red} alt={""} style={{ width: "auto", height: "8vh" }} /> 
                         </div>
-                        <Image src={temp} alt={""} className="w-21 mb-4" /> 
+                        <Image src={temp} alt={""} className="w-21 mb-4"/> 
                         <button className="animate_animated animate_slideInLeft btn-34">
-                            <span> Learn More! </span>
+                            <span> <a href="#map"> Learn More! </a></span>
                         </button>
                     </div>
                 </div>

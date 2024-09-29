@@ -1,6 +1,6 @@
 import img4 from "../../tamuhack24/client/public/co2emmisions-removebg-preview.png"
 import img3 from "../../tamuhack24/client/public/distoffires-removebg-preview.png"
-import img2 from "../../tamuhack24/client/public/freqoffires-removebg-preview.png"
+import img2 from "../../tamuhack24/client/public/freqoffires2-removebg-preview.png"
 import img1 from "../../tamuhack24/client/public/image-removebg-preview.png"
 
 export const gridItems = [

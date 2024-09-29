@@ -5,6 +5,11 @@
   src: url('./CormorantGaramond-Bold.ttf') format('truetype'); 
 }
 
+.asdfasdfasdf {
+  font-family: 'Copperplate';
+  src: url('./Copperplate Gothic Std 29 BC.otf') format('truetype');
+}
+
 .btn-34,
 .btn-34 *,
 .btn-34 :after,

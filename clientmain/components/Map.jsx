@@ -52,7 +52,7 @@ export default function Map() {
             without all the convoluted jargon. Whether you’re just curious to learn about wild fires or checking to see if your 
             area might be susceptible, Forecast provides an accessible solution for all.
             </div>
-            <h2 className="heading text-left text-7xl text-darkbrown font-extrabold py-5"> VIEW FIRE MAP </h2>
+            {/* <h2 className="heading text-left text-7xl text-darkbrown font-extrabold py-5"> VIEW FIRE MAP </h2> */}
 
             <div className="w-fit h-auto items-center mx-auto border-8 border-darkbrown relative">
                 {overlayVisible && (
