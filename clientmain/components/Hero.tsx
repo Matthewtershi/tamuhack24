@@ -21,9 +21,9 @@ const Hero = () => {
                 <div className="relative bg-[#FFFAF0] rounded-2xl p-7 border-8 border-darkbrown">
                     <div className="flex flex-col items-center">
                         <div className="flex gap-x-10 mb-4 justify-center">
-                            <Image src={yellow} alt={""} style={{ width: "80px", height: "100px" }} /> 
-                            <Image src={orange} alt={""} style={{ width: "75px", height: "100px" }} /> 
-                            <Image src={red} alt={""} style={{ width: "75px", height: "100px" }} /> 
+                            <Image src={yellow} alt={""} style={{ width: "auto", height: "8vh" }} /> 
+                            <Image src={orange} alt={""} style={{ width: "auto", height: "8vh" }} /> 
+                            <Image src={red} alt={""} style={{ width: "auto", height: "8vh" }} /> 
                         </div>
                         <Image src={temp} alt={""} className="w-21 mb-4" /> 
                         <button className="animate_animated animate_slideInLeft btn-34">
