@@ -173,7 +173,7 @@ class GFSData(DataSource):
         speed_lat_idx = np.abs(self.speed_lats - lat).argmin()
         speed_lon_idx = np.abs(self.speed_lons - (180-long)).argmin()
 
-        return self.tmp[tmp_lat_idx][tmp_lon_idx], self.rh[rh_lat_idx][rh_lon_idx], self.speeds[speed_lat_idx][speed_lon_idx]
+        return self.tmp[tmp_lat_idx][tmp_lon_idx] - 273.15, self.rh[rh_lat_idx][rh_lon_idx], self.speeds[speed_lat_idx][speed_lon_idx]
 
 class DataSources:
     def __init__(self):
