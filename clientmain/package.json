@@ -9,10 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.8",
+    "animate.css": "^4.1.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.9.0",
     "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "react-simple-maps": "^3.0.0",
+    "tailwind-merge": "^2.5.2",
+    "three": "^0.169.0",
     "three-globe": "^2.31.3"
   },
   "devDependencies": {

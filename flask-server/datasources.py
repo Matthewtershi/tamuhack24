@@ -19,6 +19,10 @@ BASE_RAIN_URL = "https://opendata.dwd.de/climate_environment/GPCC/first_guess/"
 EARTH_RADIUS = 6371e4
 
 class DataSource:
+    """
+    General interface for a "data source" that provides some global weather data. Comes with a thread-safe lock built in.
+    Call update() with the lock acquired to obtain a fresh, relevant copy of the backing data.
+    """
     def __init__(self):
         self.lock = threading.Lock()
     
@@ -32,6 +36,9 @@ class DataSource:
         pass
 
 class FWIData(DataSource):
+    """
+    Fire Weather Index data source, courtesy of NASA's derivation of the GEOS-5 dataset. Provides the various FWI metrics as a dictionary with the metric names as keys.
+    """
     def __init__(self):
         super().__init__()
 
@@ -83,16 +90,22 @@ class FWIData(DataSource):
         return yesterday.strftime(f"{BASE_FWI_URL}/%Y/%Y%m%d00/{FWIData._current_fwi_filename()}")
     
 class RainData(DataSource):
+    """
+    Precipitation data, courtesy of the German weather service. Provides rain data in mm/m^2 daily, averaged per 1 degree lat/long.
+    """
     def __init__(self):
         super().__init__()
-
-        self._rain_data_path = Path("./data/") / self._current_rain_filename(compressed=False)
 
         with self.lock:
             self.update()
             self.delete_old()
+    
+    @property
+    def _rain_data_path(self):
+        return Path("./data/") / self._current_rain_filename(compressed=False)
 
     def update(self):
+        # Redownload data if data is not present or outdates.
         if not self._rain_data_path.exists():
             print(f"Downloading rain data for {self._current_fwi_uri()}")
             req = requests.get(self._current_rain_uri())
@@ -141,6 +154,9 @@ class GFSData(DataSource):
     
     def update(self):
         yesterday = datetime.now() - timedelta(1)
+
+        # Download yesterday's Global Forecast System data through Herbie
+        # Herbie prefers AWS as a source and stores its data on disk for us
         self.H = Herbie(yesterday.strftime("%Y-%m-%d"), model="gfs")
         path = self.H.download(r":[U|V]GRD:10 m above|:TMP:2 m above|:RH:2 m above")
 
