@@ -104,10 +104,7 @@ def get_hotspots():
     layer = (pd.concat([df[['ISI', 'temp', 'DC', 'ISI', 'RH', 'wind','TempAndFFMC']]], axis=1)).values
     likelihoods = get_model().predict(layer).transpose()[0]
 
-    print(df)
-    print(likelihoods)
-
-    likely_points = [point for i, point in enumerate(points) if likelihoods[i] >= 0.5]
+    likely_points = [{"point": point, "confidence": float(likelihoods[i])} for i, point in enumerate(points) if likelihoods[i] >= 0.5]
 
     return jsonify(likely_points)
 

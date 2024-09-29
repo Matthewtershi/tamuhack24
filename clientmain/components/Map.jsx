@@ -1,14 +1,30 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';   
+import React, { useState, useEffect } from 'react'; 
+import Image from "next/image";  
 import { ComposableMap, Geographies, Geography, Marker, useZoomPanContext, ZoomableGroup } from "react-simple-maps";
 import countries from "../../client/public/countries-50m.json";
+import redflame from "../../client/public/redflame.png";
+import orangeflame from "../../client/public/orangeflame.png";
+import yellowflame from "../../client/public/yellowflame.png";
 
 const FireMarker = (props) => {
     const ctx = useZoomPanContext();
+
+    let imageSrc = "";
+    if (props.confidence > 0.8) {
+        imageSrc = redflame.src;
+    } else if (props.confidence > 0.6) {
+        imageSrc = orangeflame.src;
+    } else {
+        imageSrc = yellowflame.src;
+    }
+
     return (
         <Marker key={props.index} coordinates={props.coordinates}>
-            <circle r={5 / ctx.k} strokeWidth={2 / ctx.k} fill="#F00" stroke="#fff" />
+            <g>
+                <image href={imageSrc} height={20} y={-15} x={-6.5}/>
+            </g>
         </Marker>
     );
 };
@@ -70,7 +86,7 @@ export default function Map() {
                             }
                         </Geographies>
                         {hotspots && hotspots.map((hotspot, i) => (
-                            <FireMarker key={i} index={i} coordinates={hotspot} />
+                            <FireMarker key={i} index={i} coordinates={[hotspot.point[1], hotspot.point[0]]} confidence={hotspot.confidence}/>
                         ))}
                     </ZoomableGroup>
                 </ComposableMap>
