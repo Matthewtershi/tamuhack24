@@ -26,9 +26,15 @@ export default function Map() {
       }, []);
 
     return (
-        <div className="py-20" id="map">
-            <h2 className="heading mx-40 text-left text-7xl my-4 text-darkbrown asdfasdf font-extrabold"> WHAT WE DO </h2>
-            <div className="w-fit h-auto items-center mx-auto border-8 border-darkbrown">
+        <div className="py-20 mx-40 asdfasdf" id="map">
+            <h2 className="heading text-left text-7xl text-darkbrown font-extrabold"> WHAT WE DO </h2>
+            <div className="text-darkbrown text-3xl p-20">
+            Forecast is an interactive wildfire predictor that allows the average user to identify potential wildfire regions 
+            without all the convoluted jargon. Whether you’re just curious to learn about wild fires or checking to see if your 
+            area might be susceptible, Forecast provides an accessible solution for all.
+            </div>
+            <h2 className="heading text-left text-7xl text-darkbrown font-extrabold py-5"> VIEW FIRE MAP </h2>
+            <div className="m-8 w-fit h-fit items-center mx-auto border-8 border-darkbrown">
                 <ComposableMap style={{width: "80vw", background: "#BFE9E0"}} projection="geoMercator">
                     <ZoomableGroup center={[0, 0]} zoom={1}>
                         <Geographies geography={countries}>
