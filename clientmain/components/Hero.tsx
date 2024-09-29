@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { GlobeDemo } from "./ui/gridglobe";
-import temp from "../../client/public/head3.png";
+import temp from "../../client/public/head4.png";
 import frame from "../../client/public/frame2.png";
 import "animate.css"
 import yellow from "../../client/public/yellowflame.png";
@@ -17,24 +17,21 @@ const Hero = () => {
                 transform: "translateX(50px)",
                 }}>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
-                <div className="flex-col flex mb-10 p-4 justify-center items-center">
-                    <div className="flex gap-x-10">
-                        <Image src={yellow} alt={""} style={{
-                            width:"100px",
-                            height:"100px",
-                        }}/> 
-                        <Image src={orange} alt={""} style={{
-                            width:"100px",
-                            height:"100px",
-                        }}/> 
-                        <Image src={red} alt={""} style={{
-                            width:"100px",
-                            height:"100px",
-                        }}/> 
+                <div className="flex flex-col mb-10 p-3 justify-center items-center relative">
+                <div className="relative bg-[#FFFAF0] rounded-2xl p-7 border-8 border-darkbrown">
+                    <div className="flex flex-col items-center">
+                        <div className="flex gap-x-10 mb-4 justify-center">
+                            <Image src={yellow} alt={""} style={{ width: "auto", height: "8vh" }} /> 
+                            <Image src={orange} alt={""} style={{ width: "auto", height: "8vh" }} /> 
+                            <Image src={red} alt={""} style={{ width: "auto", height: "8vh" }} /> 
+                        </div>
+                        <Image src={temp} alt={""} className="w-21 mb-4" /> 
+                        <button className="animate_animated animate_slideInLeft btn-34">
+                            <span> Learn More! </span>
+                        </button>
                     </div>
-                    <Image src={temp} alt={""} className="w-21"/> 
-                    <button className="animate_animated animate_slideInLeft btn-34"> <span> Learn More! </span> </button>
                 </div>
+            </div>
                 <div className="flex flex-col relative right-50px top-[-25vh] w-[600px] h-[600px]" style={{
                     transform: "translateY(50px)",
                 }}>
