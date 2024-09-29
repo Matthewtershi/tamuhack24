@@ -16,7 +16,7 @@ const Hero = () => {
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
                 <div className="flex-col flex mb-10 p-4 justify-center items-center">
                     <Image src={temp} alt={""} className="w-23"/> 
-                    <button className="animate__slideInLeft ihatevegans btn-34"> <span> Learn More! </span> </button>
+                    <button className="animate__slideInLeft btn-34"> <span> Learn More! </span> </button>
                 </div>
 
                 <div className="flex flex-col relative right-0 top-[-25vh] w-[600px] h-[600px]">
