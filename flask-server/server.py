@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 
+from datasources import FWIData, RainData, WindData
+
 import random
 
 app = Flask(__name__)
