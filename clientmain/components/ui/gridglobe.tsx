@@ -14,7 +14,7 @@ export function GlobeDemo() {
     showAtmosphere: true,
     atmosphereColor: "#A2D998",
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: "#ffffff",
     emissiveIntensity: 0.1,
     shininess: 0.9,
     polygonColor: "rgba(162,217,152,0.7)",
