@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { GlobeDemo } from "./ui/gridglobe";
-import temp from "../../client/public/head2.png";
+import temp from "../../client/public/head3.png";
 import frame from "../../client/public/frame2.png";
 import "animate.css"
 import yellow from "../../client/public/yellowflame.png";
@@ -15,7 +15,7 @@ const Hero = () => {
             <div className="gap-x-10 mx-auto flex py-20 left-10" style={{userSelect: "none"}}>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
                 <div className="flex-col flex mb-10 p-4 justify-center items-center">
-                    <Image src={temp} alt={""} className="w-23"/> 
+                    <Image src={temp} alt={""} className="w-21"/> 
                     <button className="animate__slideInLeft btn-34"> <span> Learn More! </span> </button>
                 </div>
 

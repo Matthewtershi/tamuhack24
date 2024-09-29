@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Map from "@/components/Map";
 import { FloatingNav } from "@/components/ui/floatingNav";
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="bg-lightbrown h-[6vh] w-full"/>
       <Hero />
       {/* <Map /> */}
+      <Footer />
     </div>
   );
 }
