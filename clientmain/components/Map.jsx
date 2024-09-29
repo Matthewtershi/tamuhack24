@@ -26,19 +26,24 @@ export default function Map() {
       }, []);
 
     return (
-        <ComposableMap style={{width: "800px", background: "#BFE9E0"}} projection="geoMercator">
-            <ZoomableGroup center={[0, 0]} zoom={1}>
-                <Geographies geography={countries}>
-                    {({ geographies }) =>
-                        geographies.map((geo) =>
-                            <Geography fill="#A2D998" strokeWidth={0.5} stroke="#fff" key={geo.rsmKey} geography={geo} />
-                        )
-                    }
-                </Geographies>
-                {hotspots && hotspots.map((hotspot, i) => 
-                    <FireMarker key={i} index={i} coordinates={hotspot}/>
-                )}
-            </ZoomableGroup>
-        </ComposableMap>
+        <div className="py-20" id="map">
+            <h2 className="heading mx-40 text-left text-7xl my-4 text-darkbrown asdfasdf font-extrabold"> WHAT WE DO </h2>
+            <div className="w-fit h-auto items-center mx-auto border-8 border-darkbrown">
+                <ComposableMap style={{width: "80vw", background: "#BFE9E0"}} projection="geoMercator">
+                    <ZoomableGroup center={[0, 0]} zoom={1}>
+                        <Geographies geography={countries}>
+                            {({ geographies }) =>
+                                geographies.map((geo) =>
+                                    <Geography fill="#A2D998" strokeWidth={0.5} stroke="#fff" key={geo.rsmKey} geography={geo} />
+                                )
+                            }
+                        </Geographies>
+                        {hotspots && hotspots.map((hotspot, i) => 
+                            <FireMarker key={i} index={i} coordinates={hotspot}/>
+                        )}
+                    </ZoomableGroup>
+                </ComposableMap>
+            </div>
+        </div>
     )
 }
