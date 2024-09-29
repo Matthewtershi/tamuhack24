@@ -12,7 +12,7 @@ export default function Home() {
       <div className="bg-darkbrown h-[6vh] w-full"/>
       <div className="bg-lightbrown h-[6vh] w-full"/>
       <Hero />
-      {/* <Map /> */}
+      <Map />
       <Footer />
     </div>
   );
