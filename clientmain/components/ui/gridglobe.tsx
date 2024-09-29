@@ -21,7 +21,7 @@ export function GlobeDemo() {
     ambientLight: "#38bdf8",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
-    pointLight: "#ffffff",
+    pointLight: "#fffff0",
     arcTime: 2000,
     arcLength: 0.9,
     rings: 1,
