@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        '20': '30vw', // Custom width 1
+        '40': '60%',    // Custom width 2
+        '35': '80vw',    // Custom width 3
+      },
+
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

@@ -1,20 +1,28 @@
 import React from "react";
+import Image from "next/image";
+import { GlobeDemo } from "./ui/gridglobe";
+import temp from "../../client/public/head2.png";
+import yellow from "../../client/public/yellowflame.png";
+import orange from "../../client/public/orangeflame.png";
+import red from "../../client/public/redflame.png";
+import "../../client/public/general.css";
 
 const Hero = () => {
     return (
-        <div className="w-full h-[80vh] flex text-black">
-            <div className="flex w-10 h-15 bg-white"> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore 
-                magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                exercitation ullamco laboris nisi ut aliquip ex ea 
-                commodo consequat. 
-            </div>
+        <div className="w-full mx-auto h-[88vh] flex text-black">
+            <div className="gap-x-10 mx-auto flex py-20 left-10">
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+                <div className="flex-col flex mb-10 p-4 justify-center items-center">
+                    <Image src={temp} alt={""} className="w-23"/> 
+                    <button className="btn-34"> <span> Learn More! </span> </button>
+                </div>
 
-            <div>
-                asdf
+                <div className="flex flex-col relative right-0 top-[-25vh] w-[600px] h-[600px]">
+                    <GlobeDemo />
+                </div>
             </div>
         </div>
+
     );
 }
 

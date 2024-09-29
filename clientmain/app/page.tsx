@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Map from "@/components/Map";
 
 export default function Home() {
 
@@ -7,6 +8,7 @@ export default function Home() {
       <div className="bg-darkbrown h-[6vh] w-full"/>
       <div className="bg-lightbrown h-[6vh] w-full"/>
       <Hero />
+      {/* <Map /> */}
     </div>
   );
 }
