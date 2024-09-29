@@ -5,12 +5,13 @@ import requests
 from netCDF4 import Dataset
 from bisect import bisect
 import gzip
-import shutil
 import math
 import numpy as np
 import threading
 
 import grib2io
+
+from herbie import Herbie
 
 BASE_FWI_URL = "https://portal.nccs.nasa.gov/datashare/GlobalFWI/v2.0/fwiCalcs.GEOS-5/Default/GEOS-5"
 BASE_RAIN_URL = "https://opendata.dwd.de/climate_environment/GPCC/first_guess/"
@@ -102,6 +103,12 @@ class RainData(DataSource):
                 f.write(data)
     
         self.data = Dataset(self._rain_data_path, "r")
+
+    def delete_old(self):
+        for file in Path("./data/").glob("first_guess_monthly_*"):
+            if file.name == RainData._current_rain_filename(compressed=False):
+                continue
+            file.unlink()
     
     def get_data(self, lat, long):
         closest_lat = min(self.data.variables["lat"], key=lambda x: abs(x - lat))
@@ -109,7 +116,6 @@ class RainData(DataSource):
 
         lat_idx = list(self.data.variables["lat"]).index(closest_lat)
         long_idx = list(self.data.variables["lon"]).index(closest_long)
-
 
         latitude = self.data.variables["lat"][lat_idx]
         cell_area = math.sin(latitude * math.pi / 180) - math.sin((latitude - 1) * math.pi / 180) * math.pi/180 * EARTH_RADIUS**2
@@ -126,7 +132,7 @@ class RainData(DataSource):
     def _current_rain_uri():
         return datetime.now().strftime(f"{BASE_RAIN_URL}/%Y/{RainData._current_rain_filename()}")
 
-class WindData(DataSource):
+class GFSData(DataSource):
     def __init__(self):
         super().__init__()
 
@@ -134,14 +140,43 @@ class WindData(DataSource):
             self.update()
     
     def update(self):
-        self.grib = grib2io.open("data/gfs.t00z.pgrb2.1p00.f000") # TODO: Update
-        self.lats, self.lons = self.grib[0].grid()
-        self.lats = self.lats.transpose()
+        yesterday = datetime.now() - timedelta(1)
+        self.H = Herbie(yesterday.strftime("%Y-%m-%d"), model="gfs")
+        path = self.H.download(r":[U|V]GRD:10 m above|:TMP:2 m above|:RH:2 m above")
 
-        self.speeds = np.sqrt(self.grib[0].data**2 + self.grib[1].data**2)
-    
+        self.grib = grib2io.open(path)
+        self.tmp = self.grib.select(shortName='TMP')[0]
+        self.rh = self.grib.select(shortName="RH")[0]
+        self.ugrd = self.grib.select(shortName="UGRD")[0]
+        self.vgrd = self.grib.select(shortName="VGRD")[0]
+        self.speeds = np.sqrt(self.ugrd.data**2 + self.vgrd.data**2)
+
+        self.tmp_lats, self.tmp_lons = self.tmp.grid()
+        self.tmp_lats = self.tmp_lats.transpose()[0]
+        self.tmp_lons = self.tmp_lons[0]
+
+        self.rh_lats, self.rh_lons = self.rh.grid()
+        self.rh_lats = self.rh_lats.transpose()[0]
+        self.rh_lons = self.rh_lons[0]
+
+        self.speed_lats, self.speed_lons = self.ugrd.grid()
+        self.speed_lats = self.speed_lats.transpose()[0]
+        self.speed_lons = self.speed_lons[0]
+
     def get_data(self, lat, long):
-        lat_idx = np.abs(self.lats - lat).argmin()
-        lon_idx = np.abs(self.lons - (180-long)).argmin()
+        tmp_lat_idx = np.abs(self.tmp_lats - lat).argmin()
+        tmp_lon_idx = np.abs(self.tmp_lons - (180-long)).argmin()
 
-        return self.speeds[lat_idx][lon_idx]
+        rh_lat_idx = np.abs(self.rh_lats - lat).argmin()
+        rh_lon_idx = np.abs(self.rh_lons - (180-long)).argmin()
+
+        speed_lat_idx = np.abs(self.speed_lats - lat).argmin()
+        speed_lon_idx = np.abs(self.speed_lons - (180-long)).argmin()
+
+        return self.tmp[tmp_lat_idx][tmp_lon_idx], self.rh[rh_lat_idx][rh_lon_idx], self.speeds[speed_lat_idx][speed_lon_idx]
+
+class DataSources:
+    def __init__(self):
+        self.FWI = FWIData()
+        self.Rain = RainData()
+        self.GFS = GFSData()
