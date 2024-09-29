@@ -27,7 +27,7 @@ export default function Map() {
 
     return (
         <div className="py-20" id="map">
-            <h2 className="heading mx-40 text-left text-7xl font-bold my-4 text-darkbrown"> WHAT WE DO </h2>
+            <h2 className="heading mx-40 text-left text-7xl my-4 text-darkbrown asdfasdf font-extrabold"> WHAT WE DO </h2>
             <div className="w-fit h-auto items-center mx-auto border-8 border-darkbrown">
                 <ComposableMap style={{width: "80vw", background: "#BFE9E0"}} projection="geoMercator">
                     <ZoomableGroup center={[0, 0]} zoom={1}>
